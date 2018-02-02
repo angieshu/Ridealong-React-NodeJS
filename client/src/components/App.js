@@ -6,15 +6,26 @@ import TextField from 'material-ui/TextField';
 import '../css/App.css';
 
 import Customer from './Customer';
+import EnterCustomer from './EnterCustomer';
 
 class App extends Component {
 
 	state = {
 		customerName: "",
+		error: ""
 	}
 
-	handleClick() {
-		this.setState({ customerName: document.getElementById('customerName').value });
+	componentDidMount() {
+		// document.body.style.backgroundColor = `#175092`;
+	}
+
+	handleCustomerName(customerName) {
+		// console.log('intht eapp');
+		this.setState({ customerName: customerName });
+	}
+
+	clearCustomerName() {
+		this.setState({ customerName: "" });
 	}
 
 	render() {
@@ -22,19 +33,8 @@ class App extends Component {
 			<MuiThemeProvider>
 				<div className="App">
 					{this.state.customerName === "" ?
-						<div>
-							<TextField
-								id="customerName"
-								hintText="Account Name"
-								floatingLabelText="Account Name"
-								inputStyle={{ color: `#383838` }}
-								underlineStyle={{ borderColor: `red` }}
-								underlineFocusStyle={{ display: `none` }}
-								floatingLabelStyle={{ color: `red` }}
-							/>
-							<button onClick={this.handleClick.bind(this)}>OK!</button>
-						</div> :
-						<Customer customerName={this.state.customerName} />
+						<EnterCustomer handleCustomerName={this.handleCustomerName.bind(this)} /> :
+						<Customer clearCustomerName={this.clearCustomerName.bind(this)} customerName={this.state.customerName} />
 					}
 				</div>
 			</MuiThemeProvider>
