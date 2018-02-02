@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-
 // import '../css/App.css';
+
+import Images from './Images';
 
 class Media extends Component {
 
@@ -16,15 +16,19 @@ class Media extends Component {
 
 	render() {
 		return (
-			<MuiThemeProvider>
-				<div className="App">
-					{this.props.media.map(el =>
-						<div key={el.__pkAssestsID}>
-							<img src={el.Media} alt=""/>
-						</div>
-					)}
-				</div>
-			</MuiThemeProvider>
+			<div>
+				<Images media={this.props.media} category="Paper & Stationary"/>
+				<Images media={this.props.media} category="Checklist & Forms"/>
+				<Images media={this.props.media} category="Data Display"/>
+				<Images media={this.props.media} category="Notifications & Alerts"/>
+				<Images media={this.props.media} category="Data Entry"/>
+				<Images media={this.props.media} category="Navigation & Tracking"/>
+				<Images media={this.props.media} category="Scheduling & Scanning"/>
+				<Images media={this.props.media} category="Communication & Collaboration"/>
+				<Images media={this.props.media} category="Training & Evaluating"/>
+				<Images media={this.props.media} category="Health, Safety & Wellness"/>
+				<Images media={this.props.media} category="Surveillance & Monitoring"/>
+			</div>
 		);
 	}
 }

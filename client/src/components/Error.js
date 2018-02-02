@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 
 import '../css/App.css';
 
-import Customer from './Customer';
-import EnterCustomer from './EnterCustomer';
-
 class Error extends Component {
 
 	state = {

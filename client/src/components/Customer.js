@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import Media from './Media';
 import Error from './Error';
+import Header from './Header';
 
 class Customer extends Component {
 
@@ -44,15 +45,12 @@ class Customer extends Component {
 		}).catch((e) => this.setState({ error: 'An error occured.'}));
 	}
 
-	// clearData() {
-	// 	this.setState({})
-	// }
-
 	clearCustomerName() {
 		this.props.clearCustomerName();
 	}
 
 	render() {
+
 		let errorCode = this.state.errorCode;
 		return (
 			<div className="App">
@@ -61,11 +59,25 @@ class Customer extends Component {
 					<div>{errorCode !== 0 ?
 						<Error clearCustomerName={() => this.clearCustomerName()} msg={this.state.error} /> :
 						<div>
-							Name: {this.state.info.CustomerName}
+							<Header header="Customer Info" />
+							<div className="customer-info">
+								<div className="customer-info-line">
+									<p className="line-header">NAME</p>
+									<p>{this.state.info.CustomerName}</p>
+								</div>
+								<br/>
+								<div className="customer-info-line">
+									<p className="line-header">DIVISION</p>
+									<p>{this.state.info.Division}</p>
+								</div>
+								<br/>
+								<div className="customer-info-line">
+									<p className="line-header">ROLES</p>
+									<p>{this.state.info.RolesDisplay}</p>
+								</div>
+							</div>
 							<br/>
-							Division: {this.state.info.Division}
-							<br/>
-							Roles: {this.state.info.RolesDisplay}
+							<Header header="Media Gallery" />
 							<Media media={this.state.media} />
 						</div>
 					}</div>

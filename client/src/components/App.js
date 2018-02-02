@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import TextField from 'material-ui/TextField';
-
 import '../css/App.css';
 
 import Customer from './Customer';
@@ -30,14 +27,12 @@ class App extends Component {
 
 	render() {
 		return (
-			<MuiThemeProvider>
-				<div className="App">
-					{this.state.customerName === "" ?
-						<EnterCustomer handleCustomerName={this.handleCustomerName.bind(this)} /> :
-						<Customer clearCustomerName={this.clearCustomerName.bind(this)} customerName={this.state.customerName} />
-					}
-				</div>
-			</MuiThemeProvider>
+			<div className="App">
+				{this.state.customerName === "" ?
+					<EnterCustomer handleCustomerName={this.handleCustomerName.bind(this)} /> :
+					<Customer clearCustomerName={this.clearCustomerName.bind(this)} customerName={this.state.customerName} />
+				}
+			</div>
 		);
 	}
 }
