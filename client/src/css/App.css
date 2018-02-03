@@ -43,7 +43,7 @@
 
 .countdown {
 	font-size: .8em;
-	margin-top: 40%;
+	margin-top: 10%;
 }
 
 .ok-btn {
@@ -166,8 +166,8 @@
 
 .dialog-img {
 	display: block;
-	max-width: 50%;
-	max-width: 50%;
+	max-width: 45%;
+	max-height: 45%;
 	width:auto;
 	height: auto;
 	margin-left: auto;
@@ -177,6 +177,8 @@
 .media-btn {
 	background-color: none;
 	border-width: 0px;
+	font-size: 16px;
+	font-weight: bolder;
 }
 
 .media-btn:focus {
@@ -224,4 +226,25 @@
 		grid-row-gap: 10px;
 
 	}
+}
+
+.category-dialog {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.arrow-btn {
+	width: 30px;
+	height: 30px;
+}
+
+.arrow-btn-btn {
+	height: 200px;
+	background-color: transparent;
+	border-width: 0px;
+}
+
+.arrow-btn-btn:focus {
+	outline: 0;
 }

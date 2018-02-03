@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-// import '../css/App.css';
+
+import LinearProgress from 'material-ui/LinearProgress';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import Media from './Media';
 import Error from './Error';
@@ -53,36 +55,38 @@ class Customer extends Component {
 
 		let errorCode = this.state.errorCode;
 		return (
-			<div className="App">
-				{errorCode === -1 ?
-					<div> Loading... </div> :
-					<div>{errorCode !== 0 ?
-						<Error clearCustomerName={() => this.clearCustomerName()} msg={this.state.error} /> :
-						<div>
-							<Header header="Customer Info" />
-							<div className="customer-info">
-								<div className="customer-info-line">
-									<p className="line-header">NAME</p>
-									<p>{this.state.info.CustomerName}</p>
+			<MuiThemeProvider>
+				<div className="App">
+					{errorCode === -1 ?
+						<LinearProgress mode="indeterminate" /> :
+						<div>{errorCode !== 0 ?
+							<Error clearCustomerName={() => this.clearCustomerName()} msg={this.state.error} /> :
+							<div>
+								<Header clearCustomerName={() => this.props.clearCustomerName()} header="Customer Info" />
+								<div className="customer-info">
+									<div className="customer-info-line">
+										<p className="line-header">NAME</p>
+										<p>{this.state.info.CustomerName}</p>
+									</div>
+									<br/>
+									<div className="customer-info-line">
+										<p className="line-header">DIVISION</p>
+										<p>{this.state.info.Division}</p>
+									</div>
+									<br/>
+									<div className="customer-info-line">
+										<p className="line-header">ROLES</p>
+										<p>{this.state.info.RolesDisplay}</p>
+									</div>
 								</div>
 								<br/>
-								<div className="customer-info-line">
-									<p className="line-header">DIVISION</p>
-									<p>{this.state.info.Division}</p>
-								</div>
-								<br/>
-								<div className="customer-info-line">
-									<p className="line-header">ROLES</p>
-									<p>{this.state.info.RolesDisplay}</p>
-								</div>
+								<Header header="Media Gallery" />
+								<Media media={this.state.media} />
 							</div>
-							<br/>
-							<Header header="Media Gallery" />
-							<Media media={this.state.media} />
-						</div>
-					}</div>
-				}
-			</div>
+						}</div>
+					}
+				</div>
+			</MuiThemeProvider>
 		);
 	}
 }

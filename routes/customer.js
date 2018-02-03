@@ -41,7 +41,8 @@ router.post('/', function(req, res, next) {
 	}).then((response) => {
 		/** Find customer's media **/
 
-		data.info = response.data.data[0].fieldData;
+		// data.info = response.data.data[0].fieldData;
+		data.info = response.data.data.filter(el => el.fieldData.CustomerName.toUpperCase() === req.body.customerName.toUpperCase())[0].fieldData;
 
 		let request = {
 			method: 'post',
