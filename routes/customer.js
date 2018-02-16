@@ -37,6 +37,7 @@ router.post('/', function(req, res, next) {
 			}
 		};
 
+		console.log('1');
 		return axios(request);
 	}).then((response) => {
 		/** Find customer's media **/
@@ -55,11 +56,13 @@ router.post('/', function(req, res, next) {
 			}
 		}
 
+		console.log('2');
 		return axios(request);
 	}).then((response) => {
 		data.media = [];
 		response.data.data.map(el => data.media.push(el.fieldData));
 		data.errorCode = 0;
+		console.log('3');
 		res.json(data);
 	}).catch((e) => res.json(e.data))
 });
